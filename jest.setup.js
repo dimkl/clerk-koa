@@ -1,0 +1,2 @@
+process.env.CLERK_SECRET_KEY = 'sk_test_TEST_SECRET_KEY';
+process.env.CLERK_PUBLISHABLE_KEY = 'pk_test_VEVTVF9QVUJMSVNIQUJMRV9LRVkk';
