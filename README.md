@@ -65,6 +65,51 @@ import { clerkClient } from '@dimkl/clerk-koa';
 const { data: userList } = await clerkClient.users.getUserList();
 ```
 
+You will also be able to secure an Koa app.
+
+````js
+import Koa from "koa";
+import { clerkMiddleware, getAuth } from "@dimkl/clerk-koa";
+
+const app = new Koa();
+
+app.use(clerkMiddleware());
+
+app.use(async (ctx: KoaContext) => {
+  const auth = getAuth(ctx);
+  ctx.body = `<body>Hello ${auth?.userId}</body>`;
+  ctx.status = 200;
+});
+app.listen(3000);
+```
+
+You will also be able to protect a specific endpoint in a Koa app.
+
+````js
+import Koa from "koa";
+import Router from "@koa/router";
+import { clerkMiddleware, getAuth, requireAuth } from "@dimkl/clerk-koa";
+
+const app = new Koa();
+
+app.use(clerkMiddleware());
+
+router.get("/", (ctx) => {
+  ctx.body = `<body> Public Homepage ${auth.userId}</body>`;
+  ctx.status = 200;
+});
+
+router.get("/protected", requireAuth(), async (ctx: KoaContext) => {
+  const auth = getAuth(ctx);
+  ctx.body = `<body>Signed-in user "${auth.userId}"</body>`;
+  ctx.status = 200;
+});
+
+app.use(router.routes()).use(router.allowedMethods());
+
+app.listen(3000);
+```
+
 ## Support
 
 You can get in touch with us in any of the following ways:
