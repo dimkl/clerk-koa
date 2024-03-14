@@ -1,6 +1,6 @@
 {
   "name": "@dimkl/clerk-koa",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Clerk server SDK for usage with Koa",
   "keywords": [
     "clerk",
