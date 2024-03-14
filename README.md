@@ -67,7 +67,7 @@ const { data: userList } = await clerkClient.users.getUserList();
 
 You will also be able to secure an Koa app.
 
-````js
+```js
 import Koa from "koa";
 import { clerkMiddleware, getAuth } from "@dimkl/clerk-koa";
 
@@ -85,7 +85,7 @@ app.listen(3000);
 
 You will also be able to protect a specific endpoint in a Koa app.
 
-````js
+```js
 import Koa from "koa";
 import Router from "@koa/router";
 import { clerkMiddleware, getAuth, requireAuth } from "@dimkl/clerk-koa";
