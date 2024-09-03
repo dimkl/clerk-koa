@@ -1,5 +1,5 @@
 import type { Context as KoaContext } from "koa";
-import type { AuthObject } from "@clerk/backend/internal";
+import type { AuthObject } from "@clerk/backend";
 
 import { getAuth } from "../getAuth";
 import type { KoaContextWithAuth } from "../types";

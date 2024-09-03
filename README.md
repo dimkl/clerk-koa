@@ -99,7 +99,7 @@ router.get("/", (ctx) => {
   ctx.status = 200;
 });
 
-router.get("/protected", requireAuth(), async (ctx: KoaContext) => {
+router.get("/protected", requireAuth, async (ctx: KoaContext) => {
   const auth = getAuth(ctx);
   ctx.body = `<body>Signed-in user "${auth.userId}"</body>`;
   ctx.status = 200;
@@ -112,11 +112,9 @@ app.listen(3000);
 
 ## Support
 
-You can get in touch with us in any of the following ways:
+You can get in touch with me in any of the following ways:
 
-- Join the official community [Clerk Discord server](https://clerk.com/discord)
-- Create a [GitHub Discussion](https://github.com/dimkl/clerk-koa/discussions)
-- Contact options listed on [Clerk Support page](https://clerk.com/support?utm_source=github&utm_medium=koa)
+- Create a [GitHub Discussion](https://github.com/dimkl/clerk-koa/discussions) and mention `@dimkl`
 
 ## Contributing
 

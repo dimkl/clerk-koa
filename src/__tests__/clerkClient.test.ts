@@ -8,18 +8,25 @@ describe("clerkClient", () => {
     beforeEach(() => {
       process.env.CLERK_SECRET_KEY = "";
       process.env.CLERK_PUBLISHABLE_KEY = "";
+
+      jest.spyOn(console, 'error')
+      // @ts-expect-error jest.spyOn adds this functionallity
+      console.error.mockImplementation(() => null);
     });
 
     afterEach(() => {
       process.env.CLERK_SECRET_KEY = secretKey;
       process.env.CLERK_PUBLISHABLE_KEY = publishableKey;
+
+      // @ts-expect-error jest.spyOn adds this functionallity
+      console.error.mockRestore()
     });
 
     // Add all assertions in the same test since it's not easy to clear the singleton instance
     it("throws error on missing envs or triggers methods from singleton instance ", async () => {
       await expect(clerkClient.users.getCount()).rejects.toMatchObject({
         message:
-          "Missing Clerk Secret Key or API Key. Go to https://dashboard.clerk.com and get your key for your instance.",
+          "Missing Clerk Secret Key. Go to https://dashboard.clerk.com and get your key for your instance.",
       });
       process.env.CLERK_SECRET_KEY = secretKey;
 

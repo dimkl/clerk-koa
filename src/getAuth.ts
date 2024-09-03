@@ -1,4 +1,4 @@
-import type { AuthObject } from '@clerk/backend/internal';
+import type { AuthObject } from '@clerk/backend';
 import type { Context as KoaContext } from 'koa';
 
 import { middlewareRequired } from './errors';

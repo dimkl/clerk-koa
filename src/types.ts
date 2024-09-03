@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 import { createClerkClient } from '@clerk/backend';
-import type { AuthenticateRequestOptions, AuthObject } from '@clerk/backend/internal';
+import type { AuthObject } from '@clerk/backend';
+import type { AuthenticateRequestOptions } from '@clerk/backend/internal';
 import type { Request as KoaRequest, Context, Middleware } from 'koa';
 
 export type KoaContextWithAuth = Context & { auth: AuthObject };
